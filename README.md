@@ -1,27 +1,6 @@
 Task Assignment:
 
-Below can be found the steps made to install a working node app accessible via nginx proxy: 
-# Node.js CI/CD Pipeline with Jenkins, Docker & Nginx (HTTPS)
----
-## Table of Contents
-
-- [Architecture](#architecture)  
-- [Prerequisites](#prerequisites)  
-- [Setup Steps](#setup-steps)  
-  - [1. Install Docker](#1-install-docker)  
-  - [2. Install Jenkins](#2-install-jenkins)  
-  - [3. Fork & Clone Repo](#3-fork--clone-repo)  
-  - [4. Add Dockerfile](#4-add-dockerfile)  
-  - [5. Create Jenkins Pipeline](#5-create-jenkins-pipeline)  
-  - [6. Install Nginx](#6-install-nginx)  
-  - [7. Generate TLS Certificates](#7-generate-tls-certificates)  
-  - [8. Configure Nginx Reverse Proxy](#8-configure-nginx-reverse-proxy)  
-  - [9. Configure Firewall](#9-configure-firewall)  
-- [Access](#access)  
-- [Security Notes](#security-notes)  
-- [Evaluation Checklist](#evaluation-checklist)  
-
----
+You can find below the steps made to install a working node app accessible via nginx proxy: 
 
 ### 1. Install Docker
 
