@@ -2,7 +2,8 @@ Task Assignment:
 
 You can find below the steps made to install a working node app accessible via nginx proxy: 
 
-### 1. Install Docker
+### 1. Install Docker 
+Just the basic installation and also we add ubuntu user to the docker group so that we don't need to use "sudo" everything we try to run docker command. Same will be applied to jenkins user.
 
 ```bash
 #! /bin/bash
@@ -16,7 +17,8 @@ sudo systemctl start docker
 
 sudo usermod -aG docker ubuntu
 ```
-### 2. Install Jenkins - After Installation, it can be accessed through http://172.188.82.198:8080. Password can be found on /var/lib/jenkins/secrets/initialAdminPassword
+### 2. Install Jenkins 
+After Installation, it can be accessed through http://172.188.82.198:8080. Password can be found on /var/lib/jenkins/secrets/initialAdminPassword
 
 ```bash
 #!/bin/bash
@@ -39,7 +41,7 @@ sudo usermod -aG docker jenkins
 ```
 
 ### 3. Fork & Clone Repo
-I forked the repository https://github.com/heroku/node-js-sample
+I forked the repository https://github.com/heroku/node-js-sample since I will be needing to write a Dockerfile that will be used by jenkins later on the process.
 ```bash
 git clone https://github.com/geloasacode/node-js-sample.git
 cd node-js-sample
@@ -57,7 +59,8 @@ EXPOSE 3000
 CMD ["npm", "start"]
 ```
 
-### Then I pushed the changes to my repository
+### Pushed To Repo
+Then I pushed the changes to my repository
 
 ```bash
 git add Dockerfile
@@ -65,7 +68,8 @@ git commit -m "Add Dockerfile"
 git push
 ```
 
-### 5. Create Jenkins Pipeline - This will build the app image and will run the container on the VM
+### 5. Create Jenkins Pipeline
+This will build the app image and will run the container on the VM, noticed that I have referenced the forked repository on my github repository to where Dockerfile is added. We need Dockerfile since this is the blueprint the docker will follow in creating our application image.
 
 ```jenkinsfile
 pipeline {
@@ -136,7 +140,8 @@ sudo systemctl start nginx
 sudo rm /etc/nginx/sites-enabled/default
 ```
 
-### 7. Generate SSL Certs - In this section, I used the VM's ip as CNAME
+### 7. Generate SSL Certs
+In this section, I used the VM's ip as CNAME. Also this is where we create our private key and TLS crt.
 
 ```bash
 #1 /bin/bash
@@ -153,7 +158,7 @@ sudo openssl req -x509 -nodes -days 365 \
 ```
 
 ### 8. Configure Nginx Reverse Proxy
-
+This is where we map our nginx to acts as proxy. So basically it listens on port 443 with the specified server_name and it uses the TLS certificate and key we generated to encrypt traffic.
 ```nginx
 server {
     listen 443 ssl;
@@ -188,7 +193,7 @@ sudo systemctl restart nginx
 ```
 
 ### 10. Configure Firewall
-
+We use "ufw" to whitelist ports 22, 443, 80, and allow any port but 8080 to access localhost
 ```bash
 #! /bin/bash
 
