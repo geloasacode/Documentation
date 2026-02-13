@@ -3,7 +3,7 @@ Task Assignment:
 You can find below the steps made to install a working node app accessible via nginx proxy: 
 
 ### 1. Install Docker 
-Just the basic installation and also we add ubuntu user to the docker group so that we don't need to use "sudo" everything we try to run docker command. Same will be applied to jenkins user.
+Just the basic installation and also we add ubuntu user to the docker group so that we don't need to use "sudo" everytime we try to run docker command. Same will be applied to jenkins user.
 
 ```bash
 #! /bin/bash
