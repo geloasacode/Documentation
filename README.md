@@ -144,7 +144,7 @@ sudo rm /etc/nginx/sites-enabled/default
 In this section, I used the VM's ip as CNAME. Also this is where we create our private key and TLS crt.
 
 ```bash
-#1 /bin/bash
+#! /bin/bash
 
 set -e
 
